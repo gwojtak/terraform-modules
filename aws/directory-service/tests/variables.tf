@@ -1,0 +1,14 @@
+variable "ad_type" {}
+variable "customer_dns_ips" {}
+variable "customer_username" {}
+variable "description" {}
+variable "directory_size" {}
+variable "domain" {}
+variable "extra_tags" {}
+variable "num_dcs" {}
+variable "password" {}
+variable "server_edition" {}
+variable "short_name" {}
+variable "subnet_ids" {}
+variable "vpc_id" {}
+variable "profile" {}
