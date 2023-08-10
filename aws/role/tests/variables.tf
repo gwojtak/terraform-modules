@@ -1,0 +1,10 @@
+variable "create_instance_profile" {}
+variable "extra_tags" {}
+variable "policy_description" {}
+variable "policy_document" {}
+variable "role_description" {}
+variable "role_name" {}
+variable "role_trust_canonicals" {}
+variable "role_trust_federated" {}
+variable "role_trust_principals" {}
+variable "role_trust_services" {}
