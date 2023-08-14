@@ -1,5 +1,35 @@
-variable "vpc_cidr_block" {
-  description = "CIDR block assigned to the VPC"
+variable "enable_dns" {
+  description = "Controls the `enable_dns_support` attribue of the VPC."
+  type        = bool
+  default     = true
+}
+
+variable "enable_hostnames" {
+  description = "Controls the `enable_dns_hostnames` attribute of the VPC"
+  type        = bool
+  default     = true
+}
+
+variable "enable_ipv6" {
+  description = "Allows control of enabling IPv6 in the VPC"
+  type        = bool
+  default     = false
+}
+
+variable "environment" {
+  description = "Identifier for the environment that this VPC supports"
+  type        = string
+  default     = ""
+}
+
+variable "extra_tags" {
+  description = "Allows passing in of tags to be applied to resources."
+  type        = map(any)
+  default     = {}
+}
+
+variable "name" {
+  description = "A name to give to the VPC and associated resources"
   type        = string
 }
 
@@ -15,29 +45,17 @@ variable "num_nat_gws" {
   default     = 0
 }
 
-variable "name" {
-  description = "A name to give to the VPC and associated resources"
-  type        = string
-}
-
-variable "environment" {
-  description = "Identifier for the environment that this VPC supports"
-  type        = string
-  default     = ""
-}
-
-variable "public_mask_bits" {
-  description = "Number of bits for the public subnet netmask"
+variable "private_prefix_length" {
+  description = "Prefix length for the private subnet netmask.  Set to 0 to disable private subnets."
   type        = number
 }
 
-variable "private_mask_bits" {
-  description = "Number of bits for the private subnet netmask"
+variable "public_prefix_length" {
+  description = "Prefix length for the public subnet netmask.  Set to 0 to disable public subnets."
   type        = number
 }
 
-variable "enable_ipv6" {
-  description = "Allows control of enabling IPv6 in the VPC"
-  type        = bool
-  default     = false
+variable "vpc_cidr_block" {
+  description = "CIDR block assigned to the VPC"
+  type        = string
 }

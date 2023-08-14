@@ -11,16 +11,28 @@
  * 
  */
 
+terraform {
+  required_version = ">= 1.5.0"
+  required_providers {
+    aws = {
+      version = ">= 5.10"
+      source  = "hashicorp/aws"
+    }
+  }
+}
+
+locals {
+  abbreviated_azs = { for az in local.azs : az => substr(az, -2, 2) }
+  azs             = slice(data.aws_availability_zones.azs.names, 0, var.num_azs)
+  create_private  = var.private_prefix_length != 0
+  create_public   = var.public_prefix_length != 0
+  default_tags = {
+    ManagedBy      = "Terraform"
+    ResourceModule = "github.com/gwojtak/terraform-modules//aws/vpc"
+    Environment    = var.environment
+  }
+}
+
 data "aws_availability_zones" "azs" {}
 
 data "aws_region" "current" {}
-
-resource "aws_vpc" "this" {
-  cidr_block           = var.vpc_cidr_block
-  enable_dns_support   = true
-  enable_dns_hostnames = true
-
-  tags = {
-    Name = "${var.name} | ${var.environment}"
-  }
-}
