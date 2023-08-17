@@ -8,11 +8,9 @@ terraform {
   }
 }
 
-provider "aws" {
-  default_tags {
-    tags = {
-      ManagedBy = "Terraform"
-      Module    = "github.com/gwojtak/terraform-modules/aws/role"
-    }
+locals {
+  default_tags = {
+    ManagedBy      = "Terraform"
+    ResourceModule = "github.com/gwojtak/terraform-modules//aws/role"
   }
 }

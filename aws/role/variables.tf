@@ -10,14 +10,22 @@ variable "extra_tags" {
   default     = {}
 }
 
+variable "managed_policy_names" {
+  description = "The names of AWS managed policies.  Required if `policy_document` is not defined."
+  type        = list(string)
+  default     = []
+}
+
 variable "policy_description" {
-  description = "Attach this description to the created policy."
+  description = "Attach this descriptions to the created policies."
   type        = string
+  default     = ""
 }
 
 variable "policy_document" {
-  description = "A string representing the JSON policy document.  Can be created with `aws_iam_policy_document` data source or `jsonencode()` function."
+  description = "A string representing the JSON policy document.  Can be created with `aws_iam_policy_document` data source or `jsonencode()` function.  Required if `managed_policy` is not defined."
   type        = string
+  default     = ""
 }
 
 variable "role_description" {
