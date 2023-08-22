@@ -7,7 +7,7 @@ locals {
   )
   cidr_blocks = {
     private = local.create_private ? zipmap(local.private_azs, slice(local.all_cidrs, local.offsets["private"], local.offsets["private"] + var.num_azs)) : null
-    public  = local.create_public ? zipmap(local.public_azs, slice(local.all_cidrs, 0, var.num_azs + 1)) : null
+    public  = local.create_public ? zipmap(local.public_azs, slice(local.all_cidrs, 0, var.num_azs)) : null
   }
   offsets = {
     private = local.create_private ? length(local.public_azs) : null
