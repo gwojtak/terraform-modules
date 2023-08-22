@@ -19,7 +19,7 @@ variable "enable_ipv6" {
 variable "environment" {
   description = "Identifier for the environment that this VPC supports"
   type        = string
-  default     = ""
+  default     = null
 }
 
 variable "extra_tags" {
