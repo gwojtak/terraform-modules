@@ -52,7 +52,7 @@ No modules.
 | <a name="input_enable_dns"></a> [enable\_dns](#input\_enable\_dns) | Controls the `enable_dns_support` attribue of the VPC. | `bool` | `true` | no |
 | <a name="input_enable_hostnames"></a> [enable\_hostnames](#input\_enable\_hostnames) | Controls the `enable_dns_hostnames` attribute of the VPC | `bool` | `true` | no |
 | <a name="input_enable_ipv6"></a> [enable\_ipv6](#input\_enable\_ipv6) | Allows control of enabling IPv6 in the VPC | `bool` | `false` | no |
-| <a name="input_environment"></a> [environment](#input\_environment) | Identifier for the environment that this VPC supports | `string` | `""` | no |
+| <a name="input_environment"></a> [environment](#input\_environment) | Identifier for the environment that this VPC supports | `string` | `null` | no |
 | <a name="input_extra_tags"></a> [extra\_tags](#input\_extra\_tags) | Allows passing in of tags to be applied to resources. | `map(any)` | `{}` | no |
 | <a name="input_name"></a> [name](#input\_name) | A name to give to the VPC and associated resources | `string` | n/a | yes |
 | <a name="input_num_azs"></a> [num\_azs](#input\_num\_azs) | The number of Availability Zones the VPC should span | `number` | `3` | no |
