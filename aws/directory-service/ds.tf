@@ -1,7 +1,8 @@
 locals {
   tags = {
-    ManagedBy = "Terraform"
-    Module    = "github.com/gwojtak/terraform-modules//aws/directory-service"
+    Environment    = var.environment
+    ManagedBy      = "Terraform"
+    ResourceModule = "github.com/gwojtak/terraform-modules//aws/directory-service"
   }
   resolved_tags = merge(local.tags, var.extra_tags)
 }
