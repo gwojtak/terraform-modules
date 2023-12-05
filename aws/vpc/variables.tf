@@ -50,9 +50,21 @@ variable "private_prefix_length" {
   type        = number
 }
 
+variable "private_subnet_extra_tags" {
+  description = "Extra tags to apply to private subnets."
+  type        = map(any)
+  default     = {}
+}
+
 variable "public_prefix_length" {
   description = "Prefix length for the public subnet netmask.  Set to 0 to disable public subnets."
   type        = number
+}
+
+variable "public_subnet_extra_tags" {
+  description = "Extra tags to apply public subnets."
+  type        = map(any)
+  default     = {}
 }
 
 variable "vpc_cidr_block" {
