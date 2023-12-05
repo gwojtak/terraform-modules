@@ -33,7 +33,8 @@ resource "aws_subnet" "public" {
   tags = merge(
     local.default_tags,
     { Name = "Public | ${local.vpc_resolved_tags["Name"]} | ${local.abbreviated_azs[each.value]}" },
-    var.extra_tags
+    var.extra_tags,
+    var.public_subnet_extra_tags
   )
 }
 
@@ -48,6 +49,7 @@ resource "aws_subnet" "private" {
   tags = merge(
     local.default_tags,
     { Name = "Private | ${local.vpc_resolved_tags["Name"]} | ${local.abbreviated_azs[each.value]}" },
-    var.extra_tags
+    var.extra_tags,
+    var.private_subnet_extra_tags
   )
 }
