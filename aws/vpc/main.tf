@@ -11,16 +11,6 @@
  * 
  */
 
-terraform {
-  required_version = ">= 1.5.0"
-  required_providers {
-    aws = {
-      version = ">= 5.10"
-      source  = "hashicorp/aws"
-    }
-  }
-}
-
 locals {
   abbreviated_azs = { for az in local.azs : az => substr(az, -2, 2) }
   azs             = slice(data.aws_availability_zones.azs.names, 0, var.num_azs)

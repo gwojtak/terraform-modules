@@ -1,3 +1,11 @@
+/**
+ * # Amazon EKS Fargate Profile Module
+ * 
+ * Creates and manages Fargate profiles for EKS clusters.
+ * See [EKS Cluster Module](https://github.com/gwojtak/terraform-modules/aws/eks) for the EKS module.
+ *
+ */
+
 locals {
   default_tags = {
     Environment    = var.environment
