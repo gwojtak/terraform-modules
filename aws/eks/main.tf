@@ -1,3 +1,12 @@
+/**
+ * # Amazon EKS Module
+ * 
+ * Creates an EKS cluster and manages cluster add-ons.
+ *
+ * For compute resources, see the [eks-fargate-profile module](https://github.com/gwojtak/terraform-modules/aws/eks-fargate-profile) and/or the [eks-node-group module](https://github.com/gwojtak/terraform-modules/aws/eks-node-group)
+ *
+ */
+
 locals {
   default_tags = {
     Environment    = var.environment

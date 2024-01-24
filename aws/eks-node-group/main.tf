@@ -1,3 +1,11 @@
+/**
+ * # Amazon EKS Node Group Module
+ * 
+ * Creates and manages node groups for EKS clusters.
+ * See [EKS Cluster Module](https://github.com/gwojtak/terraform-modules/aws/eks) for the EKS module.
+ *
+ */
+
 locals {
   default_tags = {
     Environment    = var.environment

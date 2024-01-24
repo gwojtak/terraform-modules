@@ -1,3 +1,10 @@
+/**
+ * # Amazon DocumentDB Module
+ * 
+ * Creates a DocumentDB cluster or elastic cluster
+ *
+ */
+
 locals {
   common_tags = {
     ManagedBy = "Terraform"

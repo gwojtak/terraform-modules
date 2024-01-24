@@ -1,3 +1,10 @@
+/**
+ * # Amazon IAM Role Profile Module
+ * 
+ * Creates and manages an IAM role
+ *
+ */
+
 locals {
   canonical_users       = length(var.role_trust_canonicals) > 0 ? { CanonicalUser = var.role_trust_canonicals } : {}
   federated_policies    = length(var.role_trust_federated) > 0 ? { Federated = var.role_trust_federated } : {}
