@@ -5,7 +5,7 @@ output "kms_key" {
 
 output "key_alias" {
   description = "The object of the KMS key alias that was created."
-  value       = aws_kms_key_alias.main
+  value       = aws_kms_alias.main
 }
 
 output "key_id" {
