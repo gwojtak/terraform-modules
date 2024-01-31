@@ -14,7 +14,7 @@ locals {
   resolved_tags = merge(local.common_tags, var.extra_tags)
 }
 
-data "aws_sts_caller_identity" "me" {}
+data "aws_caller_identity" "me" {}
 
 resource "aws_kms_key" "main" {
   description             = var.key_description
@@ -39,7 +39,7 @@ data "aws_iam_policy_document" "key_policy" {
 
     principals {
       type        = "AWS"
-      identifiers = ["arn:aws:iam::${data.aws_sts_caller_identity.me.account_id}:root"]
+      identifiers = ["arn:aws:iam::${data.aws_caller_identity.me.account_id}:root"]
     }
   }
 }
