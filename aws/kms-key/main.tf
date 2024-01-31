@@ -23,7 +23,7 @@ resource "aws_kms_key" "main" {
   tags = merge(var.key_alias != null ? { Name = var.key_alias } : {}, local.resolved_tags)
 }
 
-resource "aws_kms_key_alias" "main" {
+resource "aws_kms_alias" "main" {
   for_each = var.key_alias != null ? toset([var.key_alias]) : toset([])
 
   name          = startswith(var.key_alias, "alias/") ? var.key_alias : "alias/${var.key_alias}"
