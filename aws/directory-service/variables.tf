@@ -31,6 +31,12 @@ variable "description" {
   default     = ""
 }
 
+variable "environment" {
+  description = "Used to denote dev, prod, staging, etc."
+  type        = string
+  default     = null
+}
+
 variable "directory_size" {
   description = "Only when directory_type is SimpleAD or ADConnector - specify the size of the directory"
   type        = string

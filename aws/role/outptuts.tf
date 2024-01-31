@@ -3,9 +3,13 @@ output "instance_profile" {
   value       = var.create_instance_profile ? aws_iam_instance_profile.this : null
 }
 
+output "managed_policies" {
+  description = "The managed policies attached to the role."
+  value       = values(data.aws_iam_policy.managed)
+}
 output "policy" {
   description = "The object representing the created policy."
-  value       = aws_iam_policy.this
+  value       = var.policy_document != "" ? aws_iam_policy.this : null
 }
 
 output "role" {
