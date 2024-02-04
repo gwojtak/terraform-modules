@@ -1,10 +1,9 @@
 locals {
-  do_logging    = var.log_group_name != null && var.log_group_name != ""
-  log_group_arn = local.do_logging ? (var.create_log_group ? aws_cloudwatch_log_group.this["ad_logs"].arn : data.aws_cloudwatch_log_group.this["ad_logs"].arn) : null
+  do_logging = var.log_group_name != null && var.log_group_name != ""
 }
 
 data "aws_cloudwatch_log_group" "this" {
-  for_each = !var.create_log_group && local.do_logging ? toset(["ad_logs"]) : toset([])
+  for_each = local.do_logging ? toset(["ad_logs"]) : toset([])
 
   name = var.log_group_name
 }
@@ -13,7 +12,7 @@ resource "aws_cloudwatch_log_group" "this" {
   for_each = var.create_log_group && local.do_logging ? toset(["ad_logs"]) : toset([])
 
   name = var.log_group_name
-  tags = local.resolved_tags
+  tags = merge({ Name = var.log_group_name }, local.resolved_tags)
 }
 
 data "aws_iam_policy_document" "ad_log_policy" {
@@ -26,7 +25,7 @@ data "aws_iam_policy_document" "ad_log_policy" {
       "logs:CreateLogStream",
       "logs:PutLogEvents"
     ]
-    resources = ["${local.log_group_arn}:*"]
+    resources = ["${data.aws_cloudwatch_log_group.this["ad_logs"].arn}:*"]
     principals {
       type        = "Service"
       identifiers = ["ds.amazonaws.com"]
@@ -45,5 +44,5 @@ resource "aws_directory_service_log_subscription" "this" {
   for_each = local.do_logging ? toset(["ad_logs"]) : toset([])
 
   directory_id   = aws_directory_service_directory.this.id
-  log_group_name = local.log_group_arn
+  log_group_name = data.aws_cloudwatch_log_group.this["ad_logs"].name
 }

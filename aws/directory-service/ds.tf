@@ -5,6 +5,7 @@ locals {
     ResourceModule = "github.com/gwojtak/terraform-modules//aws/directory-service"
   }
   resolved_tags = merge(local.tags, var.extra_tags)
+  edition       = var.ad_type == "MicrosoftAD" ? var.server_edition : null
 }
 
 resource "aws_directory_service_directory" "this" {
@@ -13,6 +14,7 @@ resource "aws_directory_service_directory" "this" {
   password    = var.password
   size        = var.directory_size
   type        = var.ad_type
+  edition     = local.edition
 
   dynamic "vpc_settings" {
     for_each = var.ad_type != "ADConnector" ? [var.ad_type] : []
@@ -34,5 +36,5 @@ resource "aws_directory_service_directory" "this" {
     }
   }
 
-  tags = local.resolved_tags
+  tags = merge({ Name = var.domain }, local.resolved_tags)
 }
