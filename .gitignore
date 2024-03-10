@@ -114,4 +114,5 @@ $RECYCLE.BIN/
 */tests/.terraform
 */tests/*.tfstate
 */tests/*.tfvars
+**/tests/terraform.lock.hcl
 aws/README.md
