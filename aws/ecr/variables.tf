@@ -4,7 +4,7 @@ variable "encryption_key" {
   default     = null
 
   validation {
-    condition     = var.encryption_key == null || var.encryption_key == "AES256" || can(regex("^arn:aws:kms:.*:[0-9]{12}:key/.*", var.encryption_key))
+    condition     = var.encryption_key == null || var.encryption_key == "AES256" || can(regex("^arn:aws:kms:.*:[0-9]{12}:key/.+$", var.encryption_key))
     error_message = "The `encryption_key` variable should be either set to `null`, `AES256`, or the ARN of an existing KMS key."
   }
 }
