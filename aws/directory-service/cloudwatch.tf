@@ -6,9 +6,7 @@ locals {
 data "aws_cloudwatch_log_group" "this" {
   count = length(compact([local.log_group_name]))
 
-  name = local.log_group_name
-
-  depends_on = var.create_log_group ? [aws_cloudwatch_log_group.this] : null
+  name = var.create_log_group ? aws_cloudwatch_log_group.this["ad_logs"].name : local.log_group_name
 }
 
 resource "aws_cloudwatch_log_group" "this" {
