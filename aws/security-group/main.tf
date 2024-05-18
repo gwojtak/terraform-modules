@@ -7,7 +7,7 @@ locals {
   resolved_tags = merge(local.default_tags, var.extra_tags)
   other_inbound_rules = {
     for rule in var.inbound_rules :
-    rule => {
+    join("_", slice(split("_", rule), 0, 3)) => {
       type             = "ingress"
       protocol         = split("_", rule)[0]
       from_port        = split("-", split("_", rule)[1])[0]
@@ -20,7 +20,7 @@ locals {
   }
   self_inbound_rules = {
     for rule in var.inbound_rules :
-    rule => {
+    join("_", slice(split("_", rule), 0, 3)) => {
       type        = "ingress"
       protocol    = split("_", rule)[0]
       from_port   = split("-", split("_", rule)[1])[0]
@@ -31,7 +31,7 @@ locals {
   }
   other_outbound_rules = {
     for rule in var.outbound_rules :
-    rule => {
+    join("_", slice(split("_", rule), 0, 3)) => {
       type             = "egress"
       protocol         = split("_", rule)[0]
       from_port        = split("-", split("_", rule)[1])[0]
@@ -44,7 +44,7 @@ locals {
   }
   self_outbound_rules = {
     for rule in var.outbound_rules :
-    rule => {
+    join("_", slice(split("_", rule), 0, 3)) => {
       type        = "egress"
       protocol    = split("_", rule)[0]
       from_port   = split("-", split("_", rule)[1])[0]
