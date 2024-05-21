@@ -1,3 +1,8 @@
+output "vpc_id" {
+  description = "The id of the created VPC."
+  value       = aws_vpc.this.id
+}
+
 output "elastic_ips" {
   description = "A list of aws_eip ojects created."
   value       = var.public_prefix_length > 0 ? aws_eip.nat : null
