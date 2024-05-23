@@ -50,7 +50,6 @@ No modules.
 | <a name="input_domain"></a> [domain](#input\_domain) | The fully qualified name for the directory. | `string` | n/a | yes |
 | <a name="input_environment"></a> [environment](#input\_environment) | Used to denote dev, prod, staging, etc. | `string` | `null` | no |
 | <a name="input_extra_tags"></a> [extra\_tags](#input\_extra\_tags) | A map containing tags to apply to created resources | `map(any)` | `{}` | no |
-| <a name="input_ignore_password"></a> [ignore\_password](#input\_ignore\_password) | If true, sets the lifecycle block of the `aws_directory_service_directory` resource to ignore password changes. | `bool` | `true` | no |
 | <a name="input_log_group_name"></a> [log\_group\_name](#input\_log\_group\_name) | When set, send logs to this CloudWatch Logs Log Group.  Set create\_log\_group to true if you want to create the log group | `string` | `null` | no |
 | <a name="input_num_dcs"></a> [num\_dcs](#input\_num\_dcs) | n/a | `number` | `2` | no |
 | <a name="input_password"></a> [password](#input\_password) | For SimpleAD and MicrosoftAD type, the password to set for the Admin.  For ADConnector types, this is the password to connect to the domain with. | `string` | n/a | yes |

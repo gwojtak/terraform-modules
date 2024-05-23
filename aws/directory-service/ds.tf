@@ -38,7 +38,7 @@ resource "aws_directory_service_directory" "this" {
   }
 
   lifecycle {
-    ignore_changes = var.ignore_password ? [password] : []
+    ignore_changes = [password]
   }
 
   tags = merge({ Name = var.domain }, local.resolved_tags)
