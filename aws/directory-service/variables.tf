@@ -54,6 +54,12 @@ variable "extra_tags" {
   default     = {}
 }
 
+variable "ignore_password" {
+  description = "If true, sets the lifecycle block of the `aws_directory_service_directory` resource to ignore password changes."
+  type        = bool
+  default     = true
+}
+
 variable "log_group_name" {
   description = "When set, send logs to this CloudWatch Logs Log Group.  Set create_log_group to true if you want to create the log group"
   type        = string
