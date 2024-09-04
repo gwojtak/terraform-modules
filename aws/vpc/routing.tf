@@ -37,7 +37,7 @@ resource "aws_route" "private_ipv4_default" {
 
   route_table_id         = aws_route_table.private[each.value].id
   destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = length(local.nat_gw_azs) > 1 ? aws_nat_gateway.private_gw[each.value].id : aws_nat_gateway.private_gw[local.public_azs[0]].id
+  nat_gateway_id         = length(local.nat_gw_azs) > 1 ? aws_nat_gateway.private_gw[each.value].id : aws_nat_gateway.private_gw[local.public_azs[0]].id
 }
 
 resource "aws_route_table_association" "public" {
