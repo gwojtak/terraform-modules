@@ -1,3 +1,9 @@
+variable "bootstrap_access" {
+  description = "Whether to bootstrap the EKS cluster access."
+  type        = bool
+  default     = true
+}
+
 variable "cluster_addons" {
   description = "A list of EKS add-ons to request be installed."
   type = list(object({
