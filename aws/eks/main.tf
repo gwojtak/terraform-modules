@@ -74,6 +74,11 @@ resource "aws_eks_cluster" "main" {
     subnet_ids              = var.subnet_ids
   }
 
+  access_config {
+    authentication_mode                         = "CONFIG_MAP"
+    bootstrap_cluster_creator_admin_permissions = true
+  }
+
   tags = merge({ Name = var.cluster_name }, local.resolved_tags)
 }
 
