@@ -1,5 +1,16 @@
+variable "auth_type" {
+  description = "The methods to control EKS cluster access."
+  type        = string
+}
+
 variable "bootstrap_access" {
   description = "Whether to bootstrap the EKS cluster access."
+  type        = bool
+  default     = true
+}
+
+variable "bootstrap_default_addons" {
+  description = "Controls creation of default addons, such as aws-cni, kube-prox, and CoreDNS."
   type        = bool
   default     = true
 }

@@ -46,9 +46,10 @@ resource "aws_eks_addon" "these" {
 }
 
 resource "aws_eks_cluster" "main" {
-  name                      = var.cluster_name
-  role_arn                  = aws_iam_role.eks.arn
-  enabled_cluster_log_types = var.cluster_log_types
+  name                          = var.cluster_name
+  role_arn                      = aws_iam_role.eks.arn
+  enabled_cluster_log_types     = var.cluster_log_types
+  bootstrap_self_managed_addons = var.bootstrap_default_addons
 
   dynamic "encryption_config" {
     for_each = local.kms_key_arn != null ? toset([local.kms_key_arn]) : toset([])
@@ -75,7 +76,7 @@ resource "aws_eks_cluster" "main" {
   }
 
   access_config {
-    authentication_mode                         = "CONFIG_MAP"
+    authentication_mode                         = var.auth_type
     bootstrap_cluster_creator_admin_permissions = var.bootstrap_access
   }
 
