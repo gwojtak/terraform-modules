@@ -37,7 +37,7 @@ data "aws_iam_policy_document" "trust" {
 resource "aws_iam_role" "this" {
   name        = local.role_name
   path        = local.role_path
-  description = var.policy_description
+  description = var.role_description
 
   assume_role_policy = data.aws_iam_policy_document.trust.json
 
